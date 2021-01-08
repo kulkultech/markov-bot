@@ -8,7 +8,7 @@ from flask import Flask, request, redirect
 app = Flask(__name__)
 
 @app.route("/random_message", methods=['GET', 'POST'])
-def message():
+def random_message():
 	trump_response = model.make_short_sentence(100)
 	return str(trump_response)
 
