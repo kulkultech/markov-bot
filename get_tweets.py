@@ -26,7 +26,7 @@ def clean_tweet(tweet):
     return tweet
 
 def write_tweets_to_csv(tweets):
-    with open('tweets.csv', 'wb') as f:
+    with open('tweets.csv', 'w') as f:
         writer = csv.writer(f)
         for tweet in tweets:
             tweet = clean_tweet(tweet)

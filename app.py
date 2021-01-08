@@ -8,6 +8,10 @@ from flask import Flask, request, redirect
 
 app = Flask(__name__, static_url_path='', static_folder='templates')
 
+with open("tweets.csv") as f:
+    text = f.read()
+    model = markovify.Text(text)
+
 @app.route('/')
 def root():
     return app.send_static_file('index.html')
@@ -38,8 +42,4 @@ def interactive_message():
 
 
 if __name__ == "__main__":
-    with open("tweets.csv") as f:
-        text = f.read()
-
-    model = markovify.Text(text)
     app.run(debug=True)

@@ -5,6 +5,7 @@ console.log("test")
 
 btn = document.getElementById("send-button");
 chatbox = document.getElementById("chatbox");
+textMessage = document.getElementById("text-message");
 
 const addMessageToChatbox = message => {
 	chatbox.insertAdjacentHTML('beforeend', `
@@ -33,7 +34,7 @@ const getTrumpResponse = () => {
 
 	message = document.getElementById("text-message").value
 
-	fetch(`http://localhost:5000/interactive_message?inquiry=${message}`)
+	fetch(`/interactive_message?inquiry=${message}`)
 		.then(response => response.text()
 			.then(text => {
 				addOurMessageToChatbox(message)
@@ -41,4 +42,20 @@ const getTrumpResponse = () => {
 			}))
 }
 
+const doOnEnter = event => {
+   if (event.keyCode === 13) {
+      event.preventDefault();
+      btn.click();
+   }
+}
+
 btn.addEventListener("click", getTrumpResponse, false)
+textMessage.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    btn.click();
+  }
+});
