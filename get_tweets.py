@@ -21,6 +21,7 @@ def clean_tweet(tweet):
     tweet = re.sub("\n", "", tweet)             #new lines
     tweet = re.sub("^\.\s.", "", tweet)         #leading whitespace
     tweet = re.sub("\s+", " ", tweet)           #extra whitespace
+    tweet = re.sub("&amp;", "and", tweet) #encoded ampersand
     tweet = re.sub("&", "and", tweet)       #encoded ampersands
     return tweet
 

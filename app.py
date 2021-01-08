@@ -6,7 +6,11 @@ import random
 from flask import Flask, request, redirect
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='templates')
+
+@app.route('/')
+def root():
+    return app.send_static_file('index.html')
 
 @app.route("/random_message", methods=['GET', 'POST'])
 def random_message():
