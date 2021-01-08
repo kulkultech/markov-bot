@@ -2,6 +2,7 @@
 
 import markovify
 import twilio.twiml
+import random
 from flask import Flask, request, redirect
 
 
@@ -11,6 +12,26 @@ app = Flask(__name__)
 def random_message():
 	trump_response = model.make_short_sentence(100)
 	return str(trump_response)
+
+
+@app.route("/interactive_message", methods=['GET', 'POST'])
+def interactive_message():
+	trump_response = None
+
+	user_question = request.args.get('inquiry')
+	word_list = user_question.split(' ')
+	random_word = random.choice(word_list)
+
+	print(word_list)
+	print(random_word)
+
+	try:
+		trump_response = model.make_sentence_with_start(random_word, strict=False)
+	except Exception:
+		trump_response = model.make_short_sentence(100)
+
+	return str(trump_response)
+
 
 if __name__ == "__main__":
     with open("tweets.csv") as f:
