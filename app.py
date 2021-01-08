@@ -1,12 +1,15 @@
 # Reference https://www.twilio.com/blog/2016/09/fun-with-markov-chains-python-and-twilio-sms.html
 
 import markovify
-import twilio.twiml
 import random
+from get_tweets import get_all_tweets, write_tweets_to_csv
 from flask import Flask, request, redirect
 
 
 app = Flask(__name__, static_url_path='', static_folder='templates')
+
+tweets = get_all_tweets()
+write_tweets_to_csv(tweets)
 
 with open("tweets.csv") as f:
     text = f.read()
