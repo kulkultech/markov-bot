@@ -3,6 +3,10 @@
 
 It is the code for the Meetup series by [Kulkul](https://kulkul.tech) on creating Chatbot using Python.
 
+<a href="https://www.youtube.com/watch?v=YXOCGFzOtPo">
+  <img src="http://i3.ytimg.com/vi/YXOCGFzOtPo/hqdefault.jpg" width="50%">
+</a>
+
 ## How to follow
 
 We have several branches that you can follow step by step
